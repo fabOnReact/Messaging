@@ -8,12 +8,28 @@ function fetchProductData(){
 	dataType: "jsonp",
 	type: "GET",
 	processData: false,
-	contentType: "text/plain",
+	contentType: "application/json",
 	success: function(data) {
 		console.log(data)
 		}
 	});
 };
+
+$.ajax({
+    url: 'https://yoda.p.mashape.com/yoda', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
+    type: 'GET', // The HTTP Method
+    data: {sentence: $("#boxArea").val()}, // Additional parameters here
+    datatype: 'json',
+    success: function (data) {
+        alert(data);
+    },
+    error: function (err) {
+        alert(err);
+    },
+    beforeSend: function (xhr) {
+        xhr.setRequestHeader("X-Mashape-Authorization", "<RvyROurVRvmshRzDcAtXABdytvkDp1MtroWjsnXo8Dcs9Dq6SB>"); // Enter here your Mashape key
+    }
+});});});
 
 /*
 

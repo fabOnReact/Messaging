@@ -1,16 +1,17 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
-
+  require 'net/http'
+  require 'uri'
   # GET /messages
   # GET /messages.json
   def index
     @messages = Message.all
-    # These code snippets use an open-source library.
-    response = Unirest.get "https://yoda.p.mashape.com/yoda?sentence=You+will+learn+how+to+speak+like+me+someday.++Oh+wait.",
-    headers:{
-      "X-Mashape-Key" => "WP0pPCmXNzmshoylecT0WcH83lGBp1PEzepjsn65zWUtkhU2CC",
-      "Accept" => "text/plain"
-    }
+    
+    # code to retrieve the translated text for the translator API
+    uri = URI("http://www.degraeve.com/cgi-bin/babel.cgi?d=haxor&url=http%3A%2F%2Fwww.multivax.com%2Flast_question.html&w=this+is+a+test")
+    #http = Net:HTTP.get(uri)
+    res = Net::HTTP.get_response(uri)
+    string = ((res.body.split('<p>'))[1].split('</p>'))[0]
   end
 
   # GET /messages/1
