@@ -5,5 +5,16 @@
   <%= @chatroom.name %>
 </p>
 
+<div data-behavior="messages"> <!--data-chatroom-id='<%#= @chatroom.id %>'-->
+	<% @messages.each do |message| %>
+		<%= render message %>
+	<% end %>
+</div>
+
+<%= form_for [@chatroom, Message.new], id: "new_message", remote: true do |f| %>
+	<%= f.text_area :body, rows: 1, class: "form-control", autofocus: true %>
+		<!--<input type="text" data-behavior="chatroom_speaker">-->
+<% end %>
+
 <%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
 <%= link_to 'Back', chatrooms_path %>
