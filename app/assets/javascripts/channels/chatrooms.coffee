@@ -7,6 +7,6 @@ App.chatrooms = App.cable.subscriptions.create "ChatroomsChannel",
 
   received: (data) ->
     #console.log data.message
-    $("[data-behavior='messages']").append(data.message)
+    $("[data-behavior='messages'][data-chatroom-id='#{data.chatroom_id}']").append(data.message)
     #$("[data-behaviour='messages'][data-chatroom-id='#{data.chatroom_id}'").append(data.message)
     # Called when there's incoming data on the websocket for this channel    
