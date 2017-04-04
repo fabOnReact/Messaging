@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   	resources :messages
   end
 
-  devise_for :users
+  resources :guests
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   root to: 'chatrooms#index'
   #mount ActionCable.server => '/cable'
 end

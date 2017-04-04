@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <h1 class="text-center">Guest Log in</h1>
+    <hr>
+    <%= form_for @guest, url: user_session_path(@guest) do |f| %>
+      <div class="form-group">
+        <%= f.text_field :username, autofocus: true, placeholder: 'Username', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.select(:dialect_id, Dialect.all.collect {|p| [p.name, p.id]}, {prompt: 'Select a Dialect'}, {:class => "form-control"}) %>
+      </div>
+
+      <div class="form-group">
+          <%= f.submit "Log in", class: "btn btn-primary btn-block btn-lg" %>
+      </div>
+    <% end %>
+    </div>
+</div>
+
+<%#= f.select(:roles_id, Role.all.collect {|p| [ p.role, p.id ]}, {prompt: 'Select a Role'}, {:class => "form-control"}) %>
