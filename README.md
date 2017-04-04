@@ -17,5 +17,7 @@ The message are translated by using the Net:HTTP library. The code is low qualit
 I did not have the time to set up the Guest Account feature and the other tasks.
 
 Sorry
+
 Thanks and best regards
+
 Fabrizio Bertoglio
