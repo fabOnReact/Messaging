@@ -1,5 +1,5 @@
 class ChatroomsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:join]
+  before_action :authenticate_user!
   before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
 
   # GET /chatrooms
